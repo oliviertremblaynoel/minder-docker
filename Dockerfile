@@ -1,8 +1,8 @@
 # hadolint ignore=DL3007
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm
 
-# hadolint ignore=DL3018
-RUN apt update && apt install -y \
+# hadolint ignore=DL3008
+RUN apt-get update && apt-get install -y --no-install-recommends \
     minder \
     && rm -rf \
         /tmp/* \
