@@ -1,14 +1,16 @@
 # hadolint ignore=DL3007
 FROM ghcr.io/linuxserver/baseimage-kasmvnc:debianbookworm
 
-# hadolint ignore=DL3008
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    minder \
-    && rm -rf \
-        /tmp/* \
-    && mv /usr/bin/com.github.phase1geo.minder /usr/bin/minder
-
 COPY /root /
+
+# hadolint ignore=DL3008,DL3015
+RUN apt-get update ; \
+    apt-get install -y minder ; \
+    rm -rf \
+        /tmp/* ; \
+    mv /usr/bin/com.github.phase1geo.minder /usr/bin/minder ; \
+    chmod +x /defaults/autostart /defaults/menu.xml
+
 EXPOSE 3000
 EXPOSE 3001
 

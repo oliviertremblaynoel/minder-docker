@@ -7,9 +7,9 @@ volumes:
 services:
   app:
     # Opt a) Using the pre-build image
-    image: oliviertremblaynoel/minder-docker:latest
+    # image: oliviertremblaynoel/minder-docker:latest
     # Opt b) Build locally
-    # build: .
+    build: .
     volumes:
       - config:/config
     ports:
