@@ -1,0 +1,23 @@
+# dclint disable service-image-require-explicit-tag
+name: minder
+
+volumes:
+  config:
+
+services:
+  app:
+    # Opt a) Using the pre-build image
+    image: oliviertremblaynoel/minder-docker:latest
+    # Opt b) Build locally
+    # build: .
+    volumes:
+      - config:/config
+    ports:
+      - '0.0.0.0:3000:3000'
+      - '0.0.0.0:3001:3001'
+
+    environment:
+     - PUID=1000
+     - PGID=1000
+     - TZ=America/Toronto
+     - TITLE=Minder
